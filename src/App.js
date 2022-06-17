@@ -1,62 +1,50 @@
-import LoginImage from "./images/login_page_illustration.svg";
-import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Unresponsive from "./components/Unresponsive/Unresponsive";
-
-import "./App.css";
+import Login from "./components/Login/Login";
+import Home from "./components/Home/Home";
 import { useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
+import { useSignedInStatus } from "./Store/SignedInProvider";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 function App() {
 	const [width, setwidth] = useState(window.innerWidth);
-
-	// const [authenticationData, setAuthenticationData] = useState(
-	// 	localStorage.getItem("tokens") || null
-	// );
-	// console.log(authenticationData);
+	const { signedInStatus, expiry } = useSignedInStatus();
 
 	useEffect(() => {
-		console.log("resize");
 		window.addEventListener("resize", fun_resize);
-
-		// if (authenticationData) {
-		// }
 
 		return () => window.removeEventListener("resize", fun_resize);
 	}, []);
 
 	function fun_resize() {
-		console.log(window.innerWidth);
 		setwidth(window.innerWidth);
 	}
+	console.log("app");
+	console.log(signedInStatus, expiry);
 
 	return (
-		// <Switch>
 		<div className='App-parent'>
 			{width > 1089 ? (
-				<div className='App-container'>
-					<div className='App-container1'>
-						<img className='App-container1-img' src={LoginImage} alt='login' />
-					</div>
-					<div className='App-container2'>
-						<p className='App-container2-app-name'>Moodify</p>
-						<p className='App-container2-app-description'>
-							Listen to music based on your mood, get recommendations based on
-							your previously played songs and much more!{" "}
-						</p>
-						<Button
-							variant='outline-danger'
-							size='lg'
-							className='App-container2-login'>
-							Continue with Spotify
-						</Button>
-					</div>
-				</div>
+				<Switch>
+					<Route path={"/login"} exact>
+						<Login />
+					</Route>
+					<Route path={"/home"} exact>
+						<Home />
+					</Route>
+					<Route path={"/"} exact>
+						{signedInStatus !== null && expiry !== null ? (
+							<Redirect to='/home' />
+						) : (
+							<Redirect to='/login' />
+						)}
+					</Route>
+				</Switch>
 			) : (
 				<Unresponsive />
 			)}
 		</div>
-		// </Switch>
 	);
 }
 
