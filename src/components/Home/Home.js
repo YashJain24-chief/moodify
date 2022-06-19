@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useSignedInStatus } from "../../Store/SignedInProvider.js";
 import { useUserDetailsProvider } from "../../Store/UserDetailsProvider";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -10,6 +10,7 @@ import Mood from "./Mood.js";
 import "./Mood.css";
 
 export default function Home() {
+	const history = useHistory();
 	const { setSignedInStatus, setExpiry, signedInStatus } = useSignedInStatus();
 	const { setUserName } = useUserDetailsProvider();
 	const [isLoading, setIsLoading] = useState(true);
@@ -26,7 +27,7 @@ export default function Home() {
 		}
 
 		// fetching user name
-		fetchUserProfile(signedInStatus, Redirect, setUserName, setIsLoading);
+		fetchUserProfile(history, setUserName, setIsLoading);
 	}, []);
 
 	return (

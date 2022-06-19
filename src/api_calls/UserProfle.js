@@ -1,23 +1,19 @@
-export function fetchUserProfile(
-	signedInStatus,
-	Redirect,
-	setUserName,
-	setIsLoading
-) {
+export function fetchUserProfile(history, setUserName, setIsLoading) {
 	fetch("https://api.spotify.com/v1/me", {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
-			Authorization: `Bearer ${signedInStatus}`,
+			Authorization: `Bearer ${localStorage.getItem("tokens")}`,
 		},
 	})
-		.then((res) => res.json())
+		.then((res) => res)
 		.catch((err) => console.log(err))
-		.then((res) => {
+		.then(async (res) => {
 			if (res.status === 401) {
-				<Redirect to='/login' />;
+				history.push("/login");
 			} else {
-				setUserName(res.display_name);
+				const response = await res.json();
+				setUserName(response.display_name);
 				setTimeout(() => setIsLoading(false), 1000);
 			}
 		})

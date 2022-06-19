@@ -1,9 +1,8 @@
 .mood-container {
 	color: white;
 	margin-left: 250px;
-	/* max-height: 100vh;
-	overflow-y: scroll; */
-	/* border: 2px solid red; */
+	max-height: 100vh;
+	overflow-y: scroll;
 	padding-left: 36px;
 }
 
@@ -24,11 +23,19 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	/* padding-left: 100px; */
 	padding-right: 36px;
 }
 
 .mood-chooser-parent {
 	display: flex;
 	gap: 16px;
+}
+
+.card-container {
+	margin-top: 40px;
+	display: flex;
+	gap: 30px;
+	margin-right: 36px;
+	flex-wrap: wrap;
+	justify-content: flex-start;
 }

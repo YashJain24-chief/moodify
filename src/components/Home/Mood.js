@@ -2,6 +2,7 @@ import React from "react";
 import { useUserDetailsProvider } from "../../Store/UserDetailsProvider";
 import Search from "./Search/Search";
 import MoodChooser from "./MoodChooser/MoodChooser";
+import MusicCard from "../Home/Card/MusicCard";
 
 function Mood() {
 	const { userName } = useUserDetailsProvider();
@@ -20,6 +21,40 @@ function Mood() {
 				{mood.map((mood, index) => (
 					<MoodChooser key={index} moodName={mood} />
 				))}
+			</div>
+			<div className='card-container'>
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
+				<MusicCard />
 			</div>
 		</div>
 	);
