@@ -13,7 +13,6 @@ function expiryCheck() {
 }
 
 const SignedInProvider = (props) => {
-	console.log("sign provider");
 	const [signedInStatus, setSignedInStatus] = useState(
 		expiryCheck() ? localStorage.getItem("tokens") : null
 	);

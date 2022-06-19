@@ -1,0 +1,14 @@
+.mood-chooser-name {
+	/* border: 1px solid #eb4d4b !important; */
+	font-size: 1.5rem;
+	padding: 12px;
+	border-radius: 12px;
+	text-align: center;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+	cursor: pointer;
+	width: 150px;
+}
+
+.mood-chooser-name:hover {
+	background-color: #eb4d4b;
+}

@@ -1,9 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
 import { useSignedInStatus } from "../../Store/SignedInProvider.js";
-export default function Home() {
-	const { setSignedInStatus, setExpiry } = useSignedInStatus();
+import { useUserDetailsProvider } from "../../Store/UserDetailsProvider";
+import CircularProgress from "@mui/material/CircularProgress";
 
-	console.log("home");
+import { fetchUserProfile } from "../../api_calls/UserProfle.js";
+
+import Mood from "./Mood.js";
+import "./Mood.css";
+
+export default function Home() {
+	const { setSignedInStatus, setExpiry, signedInStatus } = useSignedInStatus();
+	const { setUserName } = useUserDetailsProvider();
+	const [isLoading, setIsLoading] = useState(true);
+
 	useEffect(() => {
 		if (window.location.hash) {
 			localStorage.clear();
@@ -13,9 +23,31 @@ export default function Home() {
 			localStorage.setItem("expiry", JSON.stringify(Date.now()));
 			setSignedInStatus(access_token);
 			setExpiry(Date.now());
-			console.log("storaging auth to local storage home.js");
 		}
+
+		// fetching user name
+		fetchUserProfile(signedInStatus, Redirect, setUserName, setIsLoading);
 	}, []);
 
-	return <div>Home</div>;
+	return (
+		<>
+			{isLoading === false ? (
+				<Mood />
+			) : (
+				<div
+					style={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+						height: "100vh",
+					}}>
+					<CircularProgress
+						style={{
+							color: "#eb4d4b",
+						}}
+					/>
+				</div>
+			)}
+		</>
+	);
 }

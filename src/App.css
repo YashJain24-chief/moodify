@@ -6,50 +6,16 @@
 	font-family: "Baloo Tamma 2", cursive;
 }
 
-.App-parent {
+.home-container {
+	height: 100vh;
+	background-color: #222629;
+}
+
+.unresponsive-container {
 	height: 100vh;
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: #222629;
-}
-
-.App-container {
-	height: 100vh;
-	width: 100%;
-	height: 80%;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-}
-
-.App-container1-img {
-	height: 450px;
-}
-
-.App-container2 {
-	width: 600px;
-	padding: 48px;
-	margin-left: 36px;
-}
-
-.App-container2-app-name {
-	color: #eb4d4b;
-	font-size: 3.5rem;
-}
-
-.App-container2-app-description {
-	color: white;
-	font-size: 1.5rem;
-}
-
-.App-container2-login {
-	color: #eb4d4b !important;
-	border: 1px solid #eb4d4b !important;
-}
-
-.App-container2-login:hover {
-	background-color: #eb4d4b !important;
-	color: white !important;
 }
