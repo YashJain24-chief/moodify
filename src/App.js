@@ -6,7 +6,7 @@ import UserDetailsProvider from "./Store/UserDetailsProvider";
 import Unresponsive from "./components/Unresponsive/Unresponsive";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
-import Sidebar from "./components/Home/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar.js";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -61,7 +61,11 @@ function App() {
 				</div>
 			) : (
 				<div className='unresponsive-container'>
-					<Unresponsive />
+					<Unresponsive
+						text={
+							"Currently, Moodify does not support smaller devices. Working hard to make it feasible. Thank you for your patience!"
+						}
+					/>
 				</div>
 			)}
 		</>

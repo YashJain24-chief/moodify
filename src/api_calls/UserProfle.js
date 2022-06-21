@@ -1,5 +1,5 @@
 export function fetchUserProfile(history, setUserName, setIsLoading) {
-	fetch("https://api.spotify.com/v1/me", {
+	fetch(`https://api.spotify.com/v1/me`, {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",

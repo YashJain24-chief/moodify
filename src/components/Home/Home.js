@@ -6,8 +6,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import { fetchUserProfile } from "../../api_calls/UserProfle.js";
 
-import Mood from "./Mood.js";
-import "./Mood.css";
+import Mood from "./Mood/Mood";
+import "./Mood/Mood.css";
 
 export default function Home() {
 	const history = useHistory();

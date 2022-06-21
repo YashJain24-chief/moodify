@@ -1,7 +1,7 @@
 import React from "react";
 import LoginImage from "../../images/login_page_illustration.svg";
 
-function Unresponsive() {
+function Unresponsive({ text }) {
 	return (
 		<div
 			style={{
@@ -11,7 +11,7 @@ function Unresponsive() {
 				alignItems: "center",
 				justifyContent: "center",
 			}}>
-			<img src={LoginImage} alt='' style={{ height: "200px" }} />
+			<img src={LoginImage} alt='' style={{ height: "260px" }} />
 			<p
 				style={{
 					padding: "24px",
@@ -19,8 +19,7 @@ function Unresponsive() {
 					color: "#eb4d4b",
 					width: "70%",
 				}}>
-				Currently, Moodify does not support smaller devices. Working hard to
-				make it feasible. Thank you for your patience!
+				{text}
 			</p>
 		</div>
 	);

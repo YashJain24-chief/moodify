@@ -8,7 +8,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import RepeatOutlinedIcon from "@mui/icons-material/RepeatOutlined";
 import RecommendOutlinedIcon from "@mui/icons-material/RecommendOutlined";
 
-import ListItem from "./ListItem.js";
+import ListItem from "./ListItem";
 function Sidebar() {
 	const drawerWidth = 250;
 

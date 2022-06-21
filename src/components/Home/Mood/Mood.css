@@ -4,6 +4,7 @@
 	max-height: 100vh;
 	overflow-y: scroll;
 	padding-left: 36px;
+	margin-bottom: 20px;
 }
 
 .user-name {
@@ -38,4 +39,16 @@
 	margin-right: 36px;
 	flex-wrap: wrap;
 	justify-content: flex-start;
+	padding-bottom: 30px;
 }
+
+/* .load-more-container {
+	display: block;
+	text-align: center;
+	background-color: red;
+	width: 10%;
+	margin: auto;
+} */
+
+/* .load-more-container {
+} */
