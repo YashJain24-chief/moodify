@@ -9,7 +9,7 @@ export default function Login() {
 		const RESPONSE_TYPE = "token";
 		const REDIRECT_URI = "http://localhost:3000/home/Mood/";
 		const SCOPES =
-			"user-read-recently-played user-top-read user-read-email user-read-private";
+			"user-read-recently-played user-top-read user-read-email user-read-private user-library-read";
 		const GENERATED_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES}`;
 		window.location.href = GENERATED_URL;
 	}

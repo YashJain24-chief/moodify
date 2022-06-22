@@ -7,6 +7,7 @@ import Unresponsive from "./components/Unresponsive/Unresponsive";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import Sidebar from "./components/Sidebar/Sidebar.js";
+import NavComponent from "./components/NavComponent/NavComponent";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -49,9 +50,24 @@ function App() {
 						{signedInStatus !== null && expiry !== null ? (
 							<>
 								<Sidebar />
-								<Route path={"/home/Recent"} exact></Route>
-								<Route path={"/home/Liked"} exact></Route>
-								<Route path={"/home/Frequent"} exact></Route>
+								<Route path={"/home/Recent"} exact>
+									<NavComponent
+										url='https://api.spotify.com/v1/me/player/recently-played'
+										description='recently played'
+									/>
+								</Route>
+								<Route path={"/home/Liked"} exact>
+									<NavComponent
+										url='https://api.spotify.com/v1/me/tracks'
+										description='liked'
+									/>
+								</Route>
+								<Route path={"/home/Frequent"} exact>
+									<NavComponent
+										url='https://api.spotify.com/v1/me/top/tracks'
+										description='frequently played'
+									/>
+								</Route>
 								<Route path={"/home/Recommendation"} exact></Route>
 							</>
 						) : (

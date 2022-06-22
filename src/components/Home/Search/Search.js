@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import searchFromAPI from "../../../api_calls/SearchAPI";
 
 const Search = styled("div")(({ theme }) => ({
 	position: "relative",
@@ -45,7 +46,26 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 	},
 }));
 
-function StyledSearch() {
+function StyledSearch({ setSongList, history, setUserMood }) {
+	const [searchInput, setSearchInput] = useState("");
+
+	function searchTyping(event) {
+		setSearchInput(event.target.value);
+	}
+
+	useEffect(() => {
+		const time = setTimeout(() => {
+			if (searchInput.length > 3) {
+				searchFromAPI(searchInput, history, setUserMood, setSongList);
+			} else {
+				setSongList([]);
+			}
+		}, 1000);
+
+		return () => {
+			clearTimeout(time);
+		};
+	}, [searchInput]);
 	return (
 		<Search>
 			<SearchIconWrapper>
@@ -54,6 +74,8 @@ function StyledSearch() {
 			<StyledInputBase
 				placeholder='Search…'
 				inputProps={{ "aria-label": "search" }}
+				onChange={(event) => searchTyping(event)}
+				value={searchInput}
 			/>
 		</Search>
 	);

@@ -10,6 +10,10 @@ export function fetchUserProfile(history, setUserName, setIsLoading) {
 		.catch((err) => console.log(err))
 		.then(async (res) => {
 			if (res.status === 401) {
+				alert(
+					"Session Timeout! Unfortunately the tokens are only valid for 1hr as of now. Please login again. Thank you for your patience! "
+				);
+				localStorage.clear();
 				history.push("/login");
 			} else {
 				const response = await res.json();

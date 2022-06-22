@@ -39,19 +39,25 @@ export default async function fetchMusicData(
 				.catch((err) => console.log(err))
 				.then(async (res) => {
 					if (res.status === 401) {
+						alert(
+							"Session Timeout! Unfortunately the tokens are only valid for 1hr as of now. Please login again. Thank you for your patience! "
+						);
+						localStorage.clear();
 						history.push("/login");
 					} else {
 						const response = await res.json();
 						const tracks = response.tracks;
 						const items = tracks.items;
-
 						const arr = items.map((item) => ({
 							name: item.name,
 							previewURL: item.preview_url,
 							image: item.album.images[0].url,
+							artist: item.artists[0].name,
 						}));
 						fetchedData.push(...arr);
-						nextData.push(tracks.next);
+						if (tracks.next) {
+							nextData.push(tracks.next);
+						}
 					}
 				})
 				.catch((err) => console.log(err));
