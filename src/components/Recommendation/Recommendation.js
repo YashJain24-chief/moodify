@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import MusicCard from "../Home/Card/MusicCard";
 import getRecommendation from "../../api_calls/FetchRecommendation";
+import { useHistory } from "react-router-dom";
 
 function Recommendation() {
 	const [fetchedRecommendedList, setFetchedRecommendedList] = useState([]);
+	const histoty = useHistory();
 
 	useEffect(() => {
-		getRecommendation(setFetchedRecommendedList);
+		getRecommendation(setFetchedRecommendedList, history);
 	}, []);
 
 	return (
@@ -31,7 +33,13 @@ function Recommendation() {
 						/>
 					))
 				) : (
-					<p>No enough data to recommend songs. Start listening on Spotify!</p>
+					<p
+						style={{
+							margin: "auto",
+							marginTop: "20%",
+						}}>
+						No enough data to recommend songs. Start listening on Spotify!
+					</p>
 				)}
 			</div>
 		</div>

@@ -22,6 +22,7 @@ function Mood() {
 		["classical", "electronic"],
 		["blues", "classical"],
 	];
+	console.log(userName);
 
 	useEffect(() => {
 		fetchMusicData(userMood, setSongList, genreMapping, history);

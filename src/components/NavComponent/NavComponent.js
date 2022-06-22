@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import MusicCard from "../Home/Card/MusicCard";
 import FetchNavData from "../../api_calls/FetchNavData";
+import { useHistory } from "react-router-dom";
 
 function NavComponent(props) {
 	const [fetchedList, setFetchedList] = useState([]);
+	const history = useHistory();
 
 	useEffect(() => {
-		FetchNavData(props.url, setFetchedList);
+		FetchNavData(props.url, setFetchedList, history);
 	}, []);
 	return (
 		<div className='mood-container'>

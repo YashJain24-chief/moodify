@@ -1,4 +1,4 @@
-async function FetchNavData(url, setFetchedList) {
+async function FetchNavData(url, setFetchedList, history) {
 	await fetch(url, {
 		method: "GET",
 		headers: {

@@ -1,4 +1,7 @@
-export default async function getRecommendation(setFetchedRecommendedList) {
+export default async function getRecommendation(
+	setFetchedRecommendedList,
+	history
+) {
 	const genresData = [];
 	const fetchedData = [];
 	await fetch(`https://api.spotify.com/v1/me/top/artists`, {
@@ -20,8 +23,10 @@ export default async function getRecommendation(setFetchedRecommendedList) {
 			} else {
 				const response = await res.json();
 				const items = response.items;
-				const genres = items[0].genre;
-				genresData.push(...genres);
+				if (items[0]?.genres !== undefined) {
+					const genres = items[0].genres;
+					genresData.push(...genres);
+				}
 			}
 		})
 		.catch((err) => console.log(err));
