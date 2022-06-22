@@ -17,7 +17,7 @@ function NavComponent(props) {
 					width: "80%",
 				}}>
 				Bored of just listening to your {props.description} songs on Spotify?
-				Don't worry, we got you. You can now listen and play your fav videos
+				Don't worry, we got you. You can now listen and watch your fav videos
 				right here!
 			</p>
 			<div className='card-container'>

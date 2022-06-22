@@ -8,6 +8,7 @@ import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import Sidebar from "./components/Sidebar/Sidebar.js";
 import NavComponent from "./components/NavComponent/NavComponent";
+import Recommendation from "./components/Recommendation/Recommendation";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -68,7 +69,9 @@ function App() {
 										description='frequently played'
 									/>
 								</Route>
-								<Route path={"/home/Recommendation"} exact></Route>
+								<Route path={"/home/Recommendation"} exact>
+									<Recommendation />
+								</Route>
 							</>
 						) : (
 							<Redirect to='/login' />
